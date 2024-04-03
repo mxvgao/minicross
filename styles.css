@@ -1,0 +1,97 @@
+/* Resetting default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 40px; /* Adjust the height of the logo */
+}
+
+.rules-button button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.timer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f3f3f3;
+    padding: 20px 20px;
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px; /* Keep the margin-top for the timer */
+}
+
+.main-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 160px; /* Increase margin-top */
+}
+
+.grid {
+    flex: 1; /* Fill remaining space */
+    display: grid;
+    grid-template-columns: repeat(5, 80px); /* Enlarge the columns */
+    grid-template-rows: repeat(5, 80px); /* Enlarge the rows */
+    gap: 4px; /* Increase the gap between squares */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    max-width: 400px; /* Adjust the maximum width of the grid */
+}
+
+.square {
+    width: 80px;
+    height: 80px;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.clues-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.across-clues,
+.down-clues {
+    width: 300px; /* Set a fixed width for the clue boxes */
+    height: 200px; /* Set a fixed height for the clue boxes */
+    overflow: auto; /* Enable scrolling if content exceeds the height */
+    background-color: #f3f3f3; /* Clue box background color */
+    margin-bottom: 20px; /* Margin between the clue boxes */
+}
+
+.highlight {
+    background-color: red; /* Change the color to your preferred highlight */
+}
+
+.square:focus {
+    outline: 2px solid #3498db; /* Change the color to your preferred highlight */
+    background-color: yellow;
+}
+
