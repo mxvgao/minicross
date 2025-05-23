@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 #include <stdbool.h>
 #include <time.h>
 
 #define WORDLEN 5
-#define MAX_WORDS 10000
+#define MAX_WORDS 3000
 
 static char   grid[WORDLEN][WORDLEN];
 static bool   filled[2 * WORDLEN];
 static bool   used   [MAX_WORDS];
 static char  *wordlist[MAX_WORDS];
 static int    wordcount = 0;
+static uint64_t candidates[2 * WORDLEN][(MAX_WORDS + 63) / 64];
+static int    cand_count[2 * WORDLEN];
 
 static char *my_strdup(const char *s) {
     size_t n = strlen(s) + 1;
@@ -47,7 +50,22 @@ bool checkslot(char *word, int pos) {
     return true;
 }
 
-void place(int pos, int i, char *backup, char *w) {
+void update(void) {
+    for (int i = 0; i < 2 * WORDLEN; i++) {
+        if (filled[i]) continue;
+        for (int j = 0; j < wordcount; j++) {
+            if (((candidates[i][j / 64] >> (j % 64)) & 1) == 0) continue;
+            if (!checkslot(wordlist[j], i) || used[j]) {
+                candidates[i][j / 64] &= ~((1ULL) << (j % 64));
+                cand_count[i]--;
+            }
+        }
+    }
+}
+
+void place(int pos, int i, char *backup, uint64_t old_cands[2 * WORDLEN][(MAX_WORDS + 63) / 64], int old_counts[2 * WORDLEN]) {
+    memcpy(old_cands, candidates, sizeof candidates);
+    memcpy(old_counts, cand_count, sizeof cand_count);
     filled[pos] = true;
     used[i] = true;
     if (pos < WORDLEN) {
@@ -61,15 +79,18 @@ void place(int pos, int i, char *backup, char *w) {
     }
     if (pos < WORDLEN) {
         for (int j = 0; j < WORDLEN; j++)
-            grid[pos][j] = w[j];
+            grid[pos][j] = wordlist[i][j];
     } else {
         int col = pos - WORDLEN;
         for (int j = 0; j < WORDLEN; j++)
-            grid[j][col] = w[j];
+            grid[j][col] = wordlist[i][j];
     }
+    update();
 }
 
-void undo(int pos, int i, char *backup) {
+void undo(int pos, int i, char *backup, uint64_t old_cands[2 * WORDLEN][(MAX_WORDS + 63) / 64], int old_counts[2 * WORDLEN]) {
+    memcpy(candidates, old_cands, sizeof candidates);
+    memcpy(cand_count, old_counts, sizeof cand_count);
     filled[pos] = false;
     used[i] = false;
     if (pos < WORDLEN) {
@@ -83,33 +104,46 @@ void undo(int pos, int i, char *backup) {
     }
 }
 
+int pick_slot(void) {
+    int min_idx = -1;
+    int min_count = INT_MAX;
+    for (int i = 0; i < 2 * WORDLEN; i++) {
+        if (filled[i]) {
+            continue;
+        }
+        if (cand_count[i] < min_count) {
+            min_count = cand_count[i];
+            min_idx = i;
+        }
+    }
+    return min_idx;
+}
+
 bool backtrack(int placed) {
     /* check if we're done */
     if (placed == 2 * WORDLEN) 
         return true;
+    int pos = pick_slot();
+    if (pos < 0) return true;
+    if (cand_count[pos] == 0) return false;
     /* loop through each word */
-    for (int i = 0; i < wordcount; i++) {
-        /* check if used already */
-        if (used[i]) 
-            continue;
-        char *w = wordlist[i];
-
-        for (int pos = 0; pos < 2 * WORDLEN; pos++) {
-
-            if (filled[pos]) 
-                continue;
-
-            if (!checkslot(w, pos)) {
-                continue;
-            }
+    for (int i = 0; i < (wordcount + 63)/64; i++) {
+        uint64_t curblock = candidates[pos][i];
+        while (curblock != 0) {
+            int firstbit = __builtin_ctzll(curblock);
+            int idx = i*64 + firstbit;
+            curblock &= curblock - 1;
+            if (used[idx]) continue;
 
             char backup[WORDLEN];
-            place(pos, i, backup, w);
-
+            uint64_t old_cands[2 * WORDLEN][(MAX_WORDS + 63) / 64];
+            int old_counts[2 * WORDLEN];
+            place(pos, idx, backup, old_cands, old_counts);
+            
             if (backtrack(placed + 1))
                 return true;
 
-            undo(pos, i, backup);
+            undo(pos, idx, backup, old_cands, old_counts);
         }
     }
     return false;
@@ -143,6 +177,15 @@ int main(void) {
     memset(grid,   0, sizeof(grid));
     memset(filled, 0, sizeof(filled));
     memset(used,   0, sizeof(used));
+
+    for (int i = 0; i < 2 * WORDLEN; i++){
+        cand_count[i] = wordcount;
+        for (int j = 0; j < (wordcount + 63)/64; j++)
+            candidates[i][j] = ~0ULL;
+        if (wordcount % 64 != 0) {
+            candidates[i][((wordcount + 63)/64)-1] = (1ULL << (wordcount % 64)) - 1;
+        }
+    }
 
     /* 4) Backtrack & time it */
     clock_t t0 = clock();
