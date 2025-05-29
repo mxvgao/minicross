@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Max's Mini Crossword</title>
+  <link rel="stylesheet" href="new.css">
+</head>
+<body>
+  <!-- Page Header -->
+  <header class="site-header">
+    <h1 class="site-header__title">Max&#8217;s Mini</h1>
+    <p class="site-header__tagline">A NYT Mini Crossword Replica by Maxwell Gao</p>
+  </header>
+
+  <!-- Puzzle Controls Navigation -->
+  <nav class="controls" aria-label="Puzzle controls">
+    <div class="controls__timer">
+      <time class="controls__time" id="timerDisplay" datetime="PT0M0S">00:00</time>
+      <button class="controls__btn" id="pause" aria-pressed="false">Pause</button>
+    </div>
+    <div class="controls__buttons">
+      <!-- Reset Dropdown -->
+      <div class="controls__dropdown">
+        <button class="controls__btn" id="reset-btn" aria-haspopup="true" aria-expanded="false" aria-controls="reset-menu">Reset</button>
+        <div class="controls__menu" id="reset-menu" role="menu" hidden>
+          <button class="controls__menu-item" id="puzzle-reset-btn">Puzzle</button>
+          <button class="controls__menu-item" id="puzzletimer-reset-btn">Puzzle & Timer</button>
+        </div>
+      </div>
+      <!-- Check Dropdown -->
+      <div class="controls__dropdown">
+        <button class="controls__btn" id="check-btn" aria-haspopup="true" aria-expanded="false" aria-controls="check-menu">Check</button>
+        <div class="controls__menu" id="check-menu" role="menu" hidden>
+          <button class="controls__menu-item" id="square-check-btn">Square</button>
+          <button class="controls__menu-item" id="word-check-btn">Word</button>
+          <button class="controls__menu-item" id="puzzle-check-btn">Puzzle</button>
+        </div>
+      </div>
+      <!-- Reveal Dropdown -->
+      <div class="controls__dropdown">
+        <button class="controls__btn" id="reveal-btn" aria-haspopup="true" aria-expanded="false" aria-controls="reveal-menu">Reveal</button>
+        <div class="controls__menu" id="reveal-menu" role="menu" hidden>
+          <button class="controls__menu-item" id="square-reveal-btn">Square</button>
+          <button class="controls__menu-item" id="word-reveal-btn">Word</button>
+          <button class="controls__menu-item" id="puzzle-reveal-btn">Puzzle</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content: Grid & Clues -->
+  <main class="layout">
+    <!-- Crossword Grid -->
+    <section class="grid" id="grid" role="application" aria-label="Crossword grid"></section>
+
+    <!-- Clues Sidebar -->
+    <aside class="clues" aria-label="Crossword clues">
+      <section class="clues__group" aria-labelledby="across-heading">
+        <h2 id="across-heading" class="clues__title">Across</h2>
+        <ol class="clues__list" id="across-list"></ol>
+      </section>
+      <section class="clues__group" aria-labelledby="down-heading">
+        <h2 id="down-heading" class="clues__title">Down</h2>
+        <ol class="clues__list" id="down-list"></ol>
+      </section>
+    </aside>
+  </main>
+
+  <script src="gen.js"></script>
+  <script src="new.js"></script>
+</body>
+</html>

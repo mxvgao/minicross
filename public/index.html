@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Max's Mini</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="first-header">
+    <div class="title">
+        <h1 id="title">Max's Mini</h1>
+    </div>
+    <div class="replicaText">
+        <p id="replicaText">A NYT Mini Crossword Replica by Maxwell Gao</p>
+    </div>
+</header>
+
+<header class="timer-header">
+    <div class="timer-placeholder">
+        <div class="timer">
+            <div id="timerDisplay">00:00</div>
+            <button id="pause">Pause</button>
+        </div>
+    </div>
+    <div class="control-buttons">
+        <div class="dropdown">
+            <button id="reset-btn">Reset</button>
+            <div id="resetdropdown" class="resetdropdown-content">
+                <button id="puzzlereset-btn">Puzzle</button>
+                <button id="puzzletimerreset-btn">Puzzle & Timer</button>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button id="check-btn">Check</button>
+            <div id="checkdropdown" class="checkdropdown-content">
+                <button id="squarecheck-btn">Square</button>
+                <button id="wordcheck-btn">Word</button>
+                <button id="puzzlecheck-btn">Puzzle</button>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button id="reveal-btn">Reveal</button>
+            <div id="revealdropdown" class="revealdropdown-content">
+                <button id="squarereveal-btn">Square</button>
+                <button id="wordreveal-btn">Word</button>
+                <button id="puzzlereveal-btn">Puzzle</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="grid">
+        <div class="square row1 col1" id="r1c1"></div>
+        <div class="square row1 col2" id="r1c2"></div>
+        <div class="square row1 col3" id="r1c3"></div>
+        <div class="square row1 col4" id="r1c4"></div>
+        <div class="square row1 col5" id="r1c5"></div>
+        <div class="square row2 col1" id="r2c1"></div>
+        <div class="square row2 col2" id="r2c2"></div>
+        <div class="square row2 col3" id="r2c3"></div>
+        <div class="square row2 col4" id="r2c4"></div>
+        <div class="square row2 col5" id="r2c5"></div>
+        <div class="square row3 col1" id="r3c1"></div>
+        <div class="square row3 col2" id="r3c2"></div>
+        <div class="square row3 col3" id="r3c3"></div>
+        <div class="square row3 col4" id="r3c4"></div>
+        <div class="square row3 col5" id="r3c5"></div>
+        <div class="square row4 col1" id="r4c1"></div>
+        <div class="square row4 col2" id="r4c2"></div>
+        <div class="square row4 col3" id="r4c3"></div>
+        <div class="square row4 col4" id="r4c4"></div>
+        <div class="square row4 col5" id="r4c5"></div>
+        <div class="square row5 col1" id="r5c1"></div>
+        <div class="square row5 col2" id="r5c2"></div>
+        <div class="square row5 col3" id="r5c3"></div>
+        <div class="square row5 col4" id="r5c4"></div>
+        <div class="square row5 col5" id="r5c5"></div>
+    </div>
+        
+
+    <div class="clues-container">
+        <div class="across-clues">
+            <div>
+                <h2>Across</h2>
+            </div>
+            <div id="a1">
+                <div class="number">
+                    <b>1</b>
+                </div>
+                <div>
+                    <p id="acrossclue1"></p>
+                </div>
+            </div>
+            <div id="a2">
+                <div class="number">
+                    <b>2</b>
+                </div>
+                <div class="clue">
+                    <p id="acrossclue2"></p>
+                </div>
+            </div>
+            <div id="a3">
+                <div class="number">
+                    <b>3</b>
+                </div>
+                <div class="clue">
+                    <p id="acrossclue3"></p>
+                </div>
+            </div>
+            <div id="a4">
+                <div class="number">
+                    <b>4</b>
+                </div>
+                <div class="clue">
+                    <p id="acrossclue4"></p>
+                </div>
+            </div>
+            <div id="a5">
+                <div class="number">
+                    <b>5</b>
+                </div>
+                <div class="clue">
+                    <p id="acrossclue5"></p>
+                </div>
+            </div>
+        </div>
+        <div class="down-clues">
+            <div>
+                <h2>Down</h2>
+            </div>
+            <div id="d1">
+                <div class="number">
+                    <b>1</b>
+                </div>
+                <div>
+                    <p id="downclue1"></p>
+                </div>
+            </div>
+            <div id="d2">
+                <div class="number">
+                    <b>2</b>
+                </div>
+                <div class="clue">
+                    <p id="downclue2"></p>
+                </div>
+            </div>
+            <div id="d3">
+                <div class="number">
+                    <b>3</b>
+                </div>
+                <div class="clue">
+                    <p id="downclue3"></p>
+                </div>
+            </div>
+            <div id="d4">
+                <div class="number">
+                    <b>4</b>
+                </div>
+                <div class="clue">
+                    <p id="downclue4"></p>
+                </div>
+            </div>
+            <div id="d5">
+                <div class="number">
+                    <b>5</b>
+                </div>
+                <div class="clue">
+                    <p id="downclue5"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./gen.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Barlow";
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-width: 748px;
+    min-height: 600px;
+}
+
+h1 {
+    margin-left: 18px;
+    font-size: 56px;
+    color: #333;
+}
+
+h2 {
+    padding: 3px 3px 4px;
+    font-size: 20px;
+    border-style: solid;
+    border-color: #666;
+    border-width: 0px 0px 2px;
+}
+
+.number {
+    margin-left: 24px;
+    margin-right: 8px;
+    width: 6px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    border-bottom-style: solid;
+    border-bottom-color: #666;
+    border-bottom-width: 1px;
+}
+
+.first-header {
+    height: 96px;
+    padding: 10px 12px;
+    align-items: end;
+}
+
+.title {
+    text-align: left;
+    vertical-align: bottom;
+    display: flex;
+    flex-direction: row;
+    min-width: 265px;
+}
+
+#replicaText {
+    vertical-align: bottom;
+    margin: 6px 3px;
+    font-size: 14px;
+    min-width: 126px;
+}
+
+.timer {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 122px;
+}
+
+.timer-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 0px 12px;
+    font-size: 14px;
+    color: #333;
+    height: 52px;
+}
+
+.timer-placeholder {
+    flex-grow: 1;
+}
+
+#timerDisplay {
+    padding: 0 10px;
+    width: 60px;
+    margin: 0;
+    justify-content: center;
+}
+
+.control-buttons {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.resetdropdown-content, .checkdropdown-content, .revealdropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #fafafa;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.control-buttons button {
+    height: 50px;
+    width: 70px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 0px 10px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 0px;
+}
+
+#pause {
+    height: 50px;
+    width: 62px;
+    padding: 0px 6px;
+    background-color: #fff;
+    margin: 0;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 0px;
+    color: #333;
+    border: none;
+}
+
+#reset-btn:hover, #check-btn:hover, #reveal-btn:hover, #puzzlereset-btn:hover, #puzzletimerreset-btn:hover, #squarecheck-btn:hover, #wordcheck-btn:hover, #puzzlecheck-btn:hover, #squarereveal-btn:hover, #wordreveal-btn:hover, #puzzlereveal-btn:hover, #pause:hover {
+    background-color: #f6f6f6;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 280px);
+    gap: 20px;
+    min-height: 432px;
+    min-width: 748px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 80px); 
+    grid-template-rows: repeat(5, 80px);
+    height: 408px;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #666;
+    user-select: none;
+    box-sizing: content-box;
+}
+
+.square {
+    width: 80px;
+    height: 80px;
+    background-color: #eee;
+    cursor: pointer;
+    text-align: center;
+    font-size: 56px;
+    margin: auto;
+}
+
+.clues-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 412px;
+}
+
+.across-clues,
+.down-clues {
+    width: 300px;
+    height: 198px;
+    overflow: auto;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+#a1, #a2, #a3, #a4, #a5, #d1, #d2, #d3, #d4, #d5 {
+    display: flex;
+    flex-direction: row;
+    height: 23px;
+    align-items: center;
+}
+
+.highlight {
+    background-color: lightblue;
+}
+
+.complete {
+    color: #888;
+}
+
+.square:focus {
+    outline: none;
+}
+
+.square.focused {
+    outline: 2px solid #3498db;
+    background-color: yellow;
+}
+
+.correct {
+    color: #3498db;
+}
+
+.show {
+    display: block;
+}
