@@ -1,4 +1,5 @@
 import 'dotenv/config';
+console.log('▶ OPENAI_API_KEY:', JSON.stringify(process.env.OPENAI_API_KEY));
 
 import express from 'express';
 import cors from 'cors';
