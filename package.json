@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "sass:build": "sass scss/styles.scss dist/styles.css --style=expanded",
-    "sass:watch": "sass --watch scss/styles.scss:dist/styles.css --style=expanded"
+    "sass:build": "sass scss/styles.scss bs_sass_mockup/dist/styles.css --style=expanded",
+    "sass:watch": "sass --watch scss/styles.scss:bs_sass_mockup/dist/styles.css --style=expanded"
   },
   "dependencies": {
     "cors": "^2.8.5",
