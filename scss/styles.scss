@@ -1,0 +1,203 @@
+$font-family-primary: "Barlow", sans-serif;
+$font-family-condensed: "Barlow Condensed", sans-serif;
+
+$font-size-base: 14px;
+$font-size-h1: 56px;
+$font-size-h2-sm: 16px;
+$font-size-h2-md: 18px;
+$font-size-h2-lg: 20px;
+
+$color-border: #666;
+$color-bg-light: #eee;
+$color-bg-white: #fff;
+$color-highlight: lightblue;
+$color-complete: #888;
+$color-correct: #3498db;
+$color-focus-outline: #3498db;
+
+$break-sm: 576px;
+$break-md: 768px;
+
+$grid-size-sm: 286px;
+$grid-size-md: 356px;
+$grid-size-lg: 416px;
+
+$square-size-sm: 54px;
+$square-size-md: 68px;
+$square-size-lg: 80px;
+
+$clues-width-sm: 286px;
+$clues-width-md: 200px;
+$clues-width-lg: 300px;
+
+$clues-height-sm: 286px;
+$clues-height-md: 356px;
+$clues-height-lg: 416px;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+}
+
+h1 { font-size: $font-size-h1; font-weight: bold; }
+
+h2 {
+  font-size: $font-size-h2-sm;
+  font-weight: bold;
+  margin: 0;
+  padding: 4px;
+  border-bottom: 2px solid $color-border;
+  @media (min-width: $break-sm) { font-size: $font-size-h2-md; }
+  @media (min-width: $break-md) { font-size: $font-size-h2-lg; }
+}
+
+b {
+  display: inline-block;
+  width: 8px;
+  margin: 0 6px 0 12px;
+  @media (min-width: $break-sm) { margin: 0 6px 0 16px; }
+  @media (min-width: $break-md) { margin: 0 6px 0 20px; }
+}
+
+li {
+    height: fit-content;
+    padding: 2px 0;
+    align-content: center;
+}
+
+header {
+  height: 96px;
+  border-bottom: 1px solid $color-border;
+  &.px-2 { height: 51px; }
+}
+
+.h-50 { height: 50px; }
+
+.block {
+  height: 50px;
+  width: 70px;
+  padding: 0 8px;
+  border: none;
+  border-radius: 0;
+  font-size: $font-size-base;
+  transition: background-color 0.1s ease;
+  &:hover { background-color: #f5f5f5; }
+}
+
+.dropdown {
+  height: 100%;
+  &-menu {
+    min-height: 0;
+    min-width: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  &-item { text-align: center; }
+  &-toggle {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 280px);
+  min-height: 532px;
+  max-width: max-content;
+  @media (min-width: $break-sm) { min-height: 432px; }
+}
+
+.grid-container {
+  width: fit-content;
+  margin: 0 8px;
+}
+
+.grid {
+  width: $grid-size-sm;
+  height: $grid-size-sm;
+  padding: 2px;
+  background-color: $color-bg-white;
+  border: 2px solid $color-border;
+
+  .square {
+    background-color: $color-bg-light;
+    cursor: pointer;
+    text-align: center;
+    font-size: 34px;
+    display: inline-block;
+    width: $square-size-sm;
+    height: $square-size-sm;
+    margin: auto;
+
+    &.highlight { background-color: $color-highlight; }
+    &:focus { outline: none; }
+    &.focused { outline: 2px solid $color-focus-outline; background-color: yellow; }
+    &.correct { color: $color-correct; }
+  }
+
+  @media (min-width: $break-sm) {
+    width: $grid-size-md;
+    height: $grid-size-md;
+
+    .square {
+      width: $square-size-md;
+      height: $square-size-md;
+      font-size: 42px;
+    }
+  }
+
+  @media (min-width: $break-md) {
+    width: $grid-size-lg;
+    height: $grid-size-lg;
+
+    .square {
+      width: $square-size-lg;
+      height: $square-size-lg;
+      font-size: 56px;
+    }
+  }
+}
+
+.clues-container {
+  display: flex;
+  flex-direction: column;
+  width: $clues-width-sm;
+  height: $clues-height-sm;
+
+  @media (min-width: $break-sm) {
+    width: $clues-width-md;
+    height: $clues-height-md;
+  }
+
+  @media (min-width: $break-md) {
+    width: $clues-width-lg;
+    height: $clues-height-lg;
+  }
+
+  .clues-box {
+    flex: 1 1 0;
+    min-height: 0;
+    background-color: $color-bg-light;
+    overflow-y: auto;
+  }
+}
+
+.clue {
+  overflow-wrap: break-word;
+  max-width: 100px;
+  @media (min-width: $break-sm) { max-width: 140px; }
+  @media (min-width: $break-md) { max-width: 240px; }
+}
+
+.highlight { background-color: $color-highlight; }
+
+.complete { color: $color-complete; }

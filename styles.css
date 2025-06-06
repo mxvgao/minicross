@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Barlow";
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 56px;
+    font-weight: bold;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  padding: 4px;
+  border-bottom: 2px #666 solid;
+}
+
+li {
+    height: fit-content;
+    padding: 2px 0;
+    align-content: center;
+}
+
+b {
+    display: inline-block;
+    width: 8px;
+    margin: 0 6px 0 12px;
+}
+
+header {
+    height: 96px;
+    border-bottom: 1px solid #666;
+}
+
+header.px-2 {
+    height: 51px;
+}
+
+.h-50 {
+    height: 50px;
+}
+
+.block {
+  height: 50px;
+  width: 70px;
+  padding: 0 8px;
+  border: none;
+  transition: background-color 0.1s ease;
+  border-radius: 0;
+  font-size: 14px;
+}
+
+.clue {
+  overflow-wrap: break-word;
+  max-width: 100px;
+}
+
+.dropdown {
+  height: 100%;
+}
+
+.dropdown-menu {
+  min-height: 0;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  height: auto;
+  width: auto;
+  box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.15);
+}
+
+.dropdown-item {
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.square {
+    background-color: #eee;
+    cursor: pointer;
+    text-align: center;
+    font-size: 34px;
+    display: inline-block;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 280px);
+    min-height: 532px;
+    max-width: max-content;
+}
+
+.clues-box {
+    flex: 1;
+    background-color: #eee;
+    overflow-y: auto;
+  }
+
+
+.clues-container {
+    width: 286px;    /* fixed width once viewport ≥ 768px */
+  }
+  .grid-container {
+    width: fit-content;
+    padding: 0;
+    margin: 0 8px;
+  }
+  .grid {
+    width: 286px;    /* fixed width once viewport ≥ 768px */
+    height: 286px;   /* fixed height once viewport ≥ 768px */
+    padding: 2px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: #666 2px solid;
+  }
+  .square {
+    width: 54px;
+    height: 54px;
+  }
+
+@media (min-width: 576px) {
+  h2 {
+    font-size: 18px;
+  }
+  b {
+    margin: 0 6px 0 16px;
+  }
+  .main-container {
+    min-height: 432px;
+  }
+  .clues-container {
+    width: 200px;    /* fixed width once viewport ≥ 768px */
+    height: 356px;   /* fixed height once viewport ≥ 768px */
+  }
+  .grid-container {
+    width: fit-content;
+    padding: 0;
+    margin: 0 8px;
+  }
+  .grid {
+    width: 356px;    /* fixed width once viewport ≥ 768px */
+    height: 356px;   /* fixed height once viewport ≥ 768px */
+    padding: 2px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: #666 2px solid;
+  }
+  .square {
+    width: 68px;
+    height: 68px;
+    font-size: 42px;
+  }
+  .clue {
+    max-width: 140px;
+  }
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 20px;
+  }
+  b {
+    margin: 0 6px 0 20px;
+  }
+  .clues-container {
+    width: 300px;    /* fixed width once viewport ≥ 768px */
+    height: 416px;   /* fixed height once viewport ≥ 768px */
+  }
+  .grid-container {
+    width: fit-content;
+    padding: 0;
+    margin: 0 8px;
+  }
+  .grid {
+    width: 416px;    /* fixed width once viewport ≥ 768px */
+    height: 416px;   /* fixed height once viewport ≥ 768px */
+    padding: 2px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: #666 2px solid;
+  }
+  .square {
+    width: 80px;
+    height: 80px;
+    font-size: 56px;
+  }
+  .clue {
+    max-width: 240px;
+  }
+}
+
+.highlight {
+    background-color: lightblue;
+}
+
+.complete {
+    color: #888;
+}
+
+.square:focus {
+    outline: none;
+}
+
+.square.focused {
+    outline: 2px solid #3498db;
+    background-color: yellow;
+}
+
+.correct {
+    color: #3498db;
+}

@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  padding: 4px;
+  border-bottom: 2px solid #666;
+}
+@media (min-width: 576px) {
+  h2 {
+    font-size: 18px;
+  }
+}
+@media (min-width: 768px) {
+  h2 {
+    font-size: 20px;
+  }
+}
+
+b {
+  display: inline-block;
+  width: 8px;
+  margin: 0 6px 0 12px;
+}
+@media (min-width: 576px) {
+  b {
+    margin: 0 6px 0 16px;
+  }
+}
+@media (min-width: 768px) {
+  b {
+    margin: 0 6px 0 20px;
+  }
+}
+
+li {
+  height: fit-content;
+  padding: 2px 0;
+  align-content: center;
+}
+
+header {
+  height: 96px;
+  border-bottom: 1px solid #666;
+}
+header.px-2 {
+  height: 51px;
+}
+
+.h-50 {
+  height: 50px;
+}
+
+.block {
+  height: 50px;
+  width: 70px;
+  padding: 0 8px;
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  transition: background-color 0.1s ease;
+}
+.block:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown {
+  height: 100%;
+}
+.dropdown-menu {
+  min-height: 0;
+  min-width: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+.dropdown-item {
+  text-align: center;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 280px);
+  min-height: 532px;
+  max-width: max-content;
+}
+@media (min-width: 576px) {
+  .main-container {
+    min-height: 432px;
+  }
+}
+
+.grid-container {
+  width: fit-content;
+  margin: 0 8px;
+}
+
+.grid {
+  width: 286px;
+  height: 286px;
+  padding: 2px;
+  background-color: #fff;
+  border: 2px solid #666;
+}
+.grid .square {
+  background-color: #eee;
+  cursor: pointer;
+  text-align: center;
+  font-size: 34px;
+  display: inline-block;
+  width: 54px;
+  height: 54px;
+  margin: auto;
+}
+.grid .square.highlight {
+  background-color: lightblue;
+}
+.grid .square:focus {
+  outline: none;
+}
+.grid .square.focused {
+  outline: 2px solid #3498db;
+  background-color: yellow;
+}
+.grid .square.correct {
+  color: #3498db;
+}
+@media (min-width: 576px) {
+  .grid {
+    width: 356px;
+    height: 356px;
+  }
+  .grid .square {
+    width: 68px;
+    height: 68px;
+    font-size: 42px;
+  }
+}
+@media (min-width: 768px) {
+  .grid {
+    width: 416px;
+    height: 416px;
+  }
+  .grid .square {
+    width: 80px;
+    height: 80px;
+    font-size: 56px;
+  }
+}
+
+.clues-container {
+  display: flex;
+  flex-direction: column;
+  width: 286px;
+  height: 286px;
+}
+@media (min-width: 576px) {
+  .clues-container {
+    width: 200px;
+    height: 356px;
+  }
+}
+@media (min-width: 768px) {
+  .clues-container {
+    width: 300px;
+    height: 416px;
+  }
+}
+.clues-container .clues-box {
+  flex: 1 1 0;
+  min-height: 0;
+  background-color: #eee;
+  overflow-y: auto;
+}
+
+.clue {
+  overflow-wrap: break-word;
+  max-width: 100px;
+}
+@media (min-width: 576px) {
+  .clue {
+    max-width: 140px;
+  }
+}
+@media (min-width: 768px) {
+  .clue {
+    max-width: 240px;
+  }
+}
+
+.highlight {
+  background-color: lightblue;
+}
+
+.complete {
+  color: #888;
+}
+
+/*# sourceMappingURL=styles.css.map */
